@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVM Mood Prediction</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #6c5ce7;
+            color: white;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .sidebar button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            background: #a29bfe;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .sidebar button:hover {
+            background: #74b9ff;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        #plot-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #plot-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+        #predict-movie-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url('https://news24online.com/wp-content/uploads/2024/10/hindi-thriller.jpg') no-repeat center center;
+            background-size: cover;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #predict-movie-form {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border: 3px solid #6c5ce7;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            color: black;
+        }
+        #predict-movie-form select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        #predict-movie-form button {
+            background: #ff7675;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        #predict-movie-form button:hover {
+            background: #d63031;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h3>Graph Types</h3>
+        <button onclick="loadPlot('scatter')">Scatter Plot</button>
+        <button onclick="loadPlot('bar')">Bar Plot</button>
+        <button onclick="loadPlot('hist')">Histogram</button>
+        <button onclick="loadPlot('line')">Line Plot</button>
+        <button onclick="loadPlot('box')">Box Plot</button>
+        
+        <h3>Predict Movie</h3>
+        <button onclick="showPredictMovieForm()">Show Predict Movie Form</button>
+    </div>
+
+    <div class="content">
+        <h2>SVM Mood Prediction: Dynamic Graphs</h2>
+        <div id="plot-container">
+            <img id="plot-image" src="data:image/png;base64,{{ initial_plot }}" alt="Plot will be displayed here">
+        </div>
+    </div>
+
+    <!-- Predict Movie Form (Hidden by Default) -->
+    <div id="predict-movie-container">
+        <div id="predict-movie-form">
+            <button class="close-btn" onclick="hidePredictMovieForm()">×</button>
+            <h3>Predict Movie</h3>
+            <select id="mood-select">
+                <option value="" disabled selected>Select Mood</option>
+                {% for mood in moods %}
+                    <option value="{{ mood }}">{{ mood }}</option>
+                {% endfor %}
+            </select>
+            <button onclick="predictMovie()">Predict Movie</button>
+            <p id="movie-result" class="prediction-result mt-3"></p>
+        </div>
+    </div>
+
+    <script>
+        function loadPlot(plotType) {
+            $('#plot-container').show();
+            $('#predict-movie-container').hide();
+            $('#plot-image').attr('src', 'https://i.stack.imgur.com/kOnzy.gif'); // Show loading gif
+            $.post('/plot', { plot_type: plotType }, function(data) {
+                $('#plot-image').attr('src', 'data:image/png;base64,' + data.plot_image);
+            });
+        }
+
+        function predictMovie() {
+            var mood = $('#mood-select').val();
+            if (!mood) return;
+            
+            $.post('/predict_movie', { mood: mood }, function(data) {
+                $('#movie-result').text('Recommended Movie: ' + data.movie);
+            });
+        }
+
+        function showPredictMovieForm() {
+            $('#plot-container').hide();
+            $('#predict-movie-container').show();
+        }
+
+        function hidePredictMovieForm() {
+            $('#plot-container').show();
+            $('#predict-movie-container').hide();
+        }
+    </script>
+</body>
+</html>

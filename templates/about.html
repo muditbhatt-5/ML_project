@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MovieFlix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>MovieFlix</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="index.html">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#graphsSubmenu" data-bs-toggle="collapse">
+                        <i class="bi bi-graph-up"></i> Graphs
+                    </a>
+                    <ul class="collapse list-unstyled" id="graphsSubmenu">
+                        <li>
+                            <a href="revenue-graph.html">Revenue Analysis</a>
+                        </li>
+                        <li>
+                            <a href="ratings-graph.html">Ratings Distribution</a>
+                        </li>
+                        <li>
+                            <a href="genre-graph.html">Genre Statistics</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="about.html">
+                        <i class="bi bi-info-circle"></i> About Us
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- About Us Content -->
+            <div class="container-fluid">
+                <div class="about-section">
+                    <h1 class="mb-4">About MovieFlix</h1>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="about-content">
+                                <p class="lead">Welcome to MovieFlix - Your Premier Movie Analytics Platform</p>
+                                <p>We are passionate about bringing you the most comprehensive movie insights and analytics. Our platform helps you discover trending movies, analyze box office performance, and understand viewer preferences.</p>
+                                
+                                <h3 class="mt-4">Our Mission</h3>
+                                <p>To provide movie enthusiasts with detailed analytics and insights about their favorite films and help them discover new content based on data-driven recommendations.</p>
+                                
+                                <h3 class="mt-4">Contact Information</h3>
+                                <div class="contact-info">
+                                    <p><i class="bi bi-envelope"></i> Email: <a href="mailto:contact@movieflix.com">contact@movieflix.com</a></p>
+                                    <p><i class="bi bi-github"></i> GitHub: <a href="https://github.com/movieflix">github.com/movieflix</a></p>
+                                    <p><i class="bi bi-linkedin"></i> LinkedIn: <a href="https://linkedin.com/company/movieflix">linkedin.com/company/movieflix</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="team-section">
+                                <h3>Our Team</h3>
+                                <div class="team-member">
+                                    <img src="https://place-hold.it/150x150/666/fff/000?text=Team" alt="Team Member" class="rounded-circle mb-3">
+                                    <h4>Movie Analytics Experts</h4>
+                                    <p>Dedicated to providing you with the best movie insights</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer mt-auto py-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>About Us</h5>
+                            <p>Your ultimate destination for movie insights and analytics.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Connect With Us</h5>
+                            <div class="social-links">
+                                <a href="mailto:contact@movieflix.com"><i class="bi bi-envelope"></i></a>
+                                <a href="https://github.com/movieflix"><i class="bi bi-github"></i></a>
+                                <a href="https://linkedin.com/company/movieflix"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

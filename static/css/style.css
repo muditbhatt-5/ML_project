@@ -1,0 +1,247 @@
+/* Main Theme Colors */
+:root {
+    --primary-bg: #121212;
+    --secondary-bg: #1e1e1e;
+    --accent-color: #0493df;
+    --text-color: #ffffff;
+    --card-bg: #2d2d2d;
+    --sidebar-width: 250px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+/* Wrapper */
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+/* Sidebar */
+#sidebar {
+    min-width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    background: var(--secondary-bg);
+    color: var(--text-color);
+    transition: all 0.3s;
+    height: 100vh;
+    position: fixed;
+}
+
+#sidebar.active {
+    margin-left: calc(-1 * var(--sidebar-width));
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: var(--accent-color);
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul li a {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar ul li a:hover {
+    background: var(--accent-color);
+}
+
+#sidebar ul li.active > a {
+    background: var(--accent-color);
+}
+
+/* Submenu */
+#sidebar ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: var(--secondary-bg);
+}
+
+/* Content */
+#content {
+    width: calc(100% - var(--sidebar-width));
+    padding: 20px;
+    margin-left: var(--sidebar-width);
+    transition: all 0.3s;
+}
+
+#content.active {
+    margin-left: 0;
+    width: 100%;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--secondary-bg);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.btn-info {
+    background-color: var(--accent-color);
+    border: none;
+}
+
+.btn-info:hover {
+    background-color: #037abc;
+}
+
+/* Movie Cards */
+.movie-card {
+    background: var(--card-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 0 15px rgba(4, 147, 223, 0.2);
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(4, 147, 223, 0.4);
+    border-color: #037abc;
+}
+
+.movie-card .card-body {
+    padding: 15px;
+}
+
+.movie-card .card-title {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.movie-card .card-text {
+    color: var(--text-color);
+}
+
+/* Movie Grid */
+.movie-grid {
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Scrollbar */
+.movie-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.movie-grid::-webkit-scrollbar-track {
+    background: var(--secondary-bg);
+}
+
+.movie-grid::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+/* Footer */
+.footer {
+    background: var(--secondary-bg);
+    color: var(--text-color);
+    padding: 20px 0;
+    margin-top: 30px;
+    border-radius: 8px;
+}
+
+.social-links a {
+    color: var(--text-color);
+    margin-right: 15px;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Graph Section */
+.graph-section {
+    background: var(--secondary-bg);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.graph-container {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    height: 400px;
+    width: 100%;
+    position: relative;
+}
+
+/* About Page Styles */
+.about-section {
+    background: var(--secondary-bg);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.about-content {
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.contact-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.team-section {
+    text-align: center;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Form Controls */
+.form-control {
+    background-color: var(--card-bg);
+    border: 1px solid var(--accent-color);
+    color: var(--text-color);
+}
+
+.form-control:focus {
+    background-color: var(--card-bg);
+    border-color: var(--accent-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.25rem rgba(4, 147, 223, 0.25);
+}
